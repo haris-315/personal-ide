@@ -1,0 +1,19 @@
+{
+    ".josn": "rl",
+    ".py": "py",
+    ".java": "java",
+    ".c": "gcc",
+    ".txt": "rl",
+    ".cmd": "start",
+    ".bat": "start",
+    ".dart": "dart",
+    ".js": "node",
+    ".css": "rl",
+    ".html": "stf",
+    ".htm": "stf",
+    ".jsx": "rl",
+    ".srt": "rl",
+    ".ruby": "ruby",
+    ".spec": "rl",
+    ".kv": "rl"
+}

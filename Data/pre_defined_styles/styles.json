@@ -1,0 +1,7 @@
+{
+    "default" : {"windows_color": "#000000ff", "border_color": "#000000ff", "text_color": "#ffffffff", "buttons_color": "#ffffffff"},
+    "shaded_blue" : {"windows_color": "#000018ff", "border_color": "#ffffffff", "text_color": "#ffffffff", "buttons_color": "#4cffffff"},
+    "n_blue" : {"windows_color": "#000018ff", "border_color": "#ffffffff", "text_color": "#ffffffff", "buttons_color": "#4cffffff"},
+    "j_blue" : {"windows_color": "#000018ff", "border_color": "#ffffffff", "text_color": "#ffffffff", "buttons_color": "#4cffffff"},
+    "k_blue" : {"windows_color": "#000018ff", "border_color": "#ffffffff", "text_color": "#ffffffff", "buttons_color": "#4cffffff"}
+}

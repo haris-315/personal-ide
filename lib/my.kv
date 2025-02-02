@@ -1,0 +1,341 @@
+
+<FileCreationPopup>:
+	CMDCard:
+		bg_color: 1,0,0,1
+		pos: root.pos
+		size: root.size
+		radius: [0,0,0,0]
+		hovering: False
+		on_press: None
+	MDTextField:
+		id: createfile
+		size_hint: .9,.35
+		mutliline: False
+		pos_hint: {"x":.05,"y":.5}
+		MDTextFieldHintText:
+			text: 'Name of file'
+			text_color: app.styler.fgc
+	Button:
+		background_color: app.styler.bgc
+		color: app.styler.fgc
+		text:'Create File'
+		size_hint: .9,.4
+		pos_hint: {"x":.05,"y":.05}
+		on_press: root.createfile()
+
+
+
+
+<Theming>:
+	name: "third"
+	textcol:textcol
+	MDFloatLayout:
+		CMDCard:
+			size_hint: .4,.58
+			bg_color: 1,0,0,1
+			pos_hint: {"x":.5,"y":.35}
+			radius: [10,10,10,10]
+			hovering: False
+			on_press: None
+		MDTextField:
+			id: textcol
+			size_hint: .2,.01
+			pos_hint: {"x":.6,"y":.5}
+			mutliline: False
+			MDTextFieldHintText:
+            	text: 'Text Color'
+				text_color: app.styler.fgc
+		CMDLabel:
+			text:'Requires Reload'
+			size_hint: .2,.05
+			pos_hint: {"x":.615,"y":.44}
+
+
+		MDTextField:
+			id: winscol
+			size_hint: .2,.01
+			pos_hint: {"x":.6,"y":.6}
+			mutliline: False
+			MDTextFieldHintText:
+            	text:'Window Color'
+				text_color: app.styler.fgc
+
+		MDTextField:
+			id: bordcol
+			size_hint: .2,.01
+			pos_hint: {"x":.6,"y":.7}
+			mutliline: False
+			hint_text_color: rgba(app.styler.fgc)
+			MDTextFieldHintText:
+            	text:'Borders Color'
+				# text_color: app.styler.fgc
+
+		MDTextField:
+			id: btncol
+			size_hint: .2,.01
+			pos_hint: {"x":.6,"y":.8}
+			border: 10,10,10,10
+			mutliline: False
+			MDTextFieldHintText:
+            	text:'Buttons Color'
+				
+
+		Button:
+		    background_color: app.styler.bgc
+		    color: app.styler.fgc
+			text:'Apply Style'
+			size_hint: .2,.05
+			pos_hint: {"x":.6,"y":.4}
+			on_press: root.apply_style(),root.back_to_home_screen()
+		ColorPicker:
+			id: deccol
+			size_hint: .4,.5
+			pos_hint: {"x":.05,"y":.4}
+			wheel: False
+		
+		MDIconButton:
+            icon: "arrow-left"  
+            theme_text_color: "Custom"  
+			text_color: 1, 1, 1, 1  
+			pos_hint: {"x":0,"y":.9}
+            on_press: root.back_to_home_screen()
+		
+
+
+
+
+
+<Screen1>:
+	file: chooser
+	name: 'first'
+	size: root.width, root.height
+	MDFloatLayout:
+		id: parent
+		CMDLabel:
+			id: sep
+			text:'Select File To Open'
+			size_hint: .2,.1
+			pos_hint: {"x":.15,"top":1}
+		# CMDCard:
+		# 	size_hint: .4,.9
+		# 	bg_color: 1,0,0,1
+		# 	pos_hint: {"x":0,"y":.02}
+		# 	radius: [10,10,10,10]
+		# 	hovering: False
+		# 	on_press: None
+		FileChooserListView:	
+			id: chooser
+			size_hint:.4,.8
+			color: .6,.3,.5,.5
+			pos_hint: {"x":0,"top":.9}
+			path: "./"
+			on_selection: root.file_info()
+	
+
+		CMDCard:
+			size_hint: .375,.9
+			md_bg_color: app.styler.brc
+			pos_hint: {"x":.42,"y":.02}
+			radius: [10,10,10,10]
+			hovering: False
+			on_press: None
+			# pos_hint: {'x':.,'y':0}
+
+
+		CMDLabel:
+			pos_hint: {'x':0.55,'y':.8}
+			size_hint: .2,.1
+			id: filename
+			text:''
+		CMDLabel:
+			size_hint: .2,.1
+			pos_hint: {'x':0.55,'y':.6}
+			id: filetype
+			text:''
+		CMDLabel:
+			size_hint: .2,.1
+			pos_hint: {'x':0.55,'y':.4}
+			id: filesize
+			text:''
+		CMDLabel:
+			size_hint: .2,.1
+			pos_hint: {'x':0.55,'y':.2}
+			id: filepath
+			text:''
+		
+		# Label:
+		# 	size_hint: .05,.1
+		# 	pos_hint: {'x':0.595,'y':0}
+		# 	id: filepath
+		# 	text:''
+		# 	color: app.styler.fgc
+
+
+
+
+		CMDCard:
+			size_hint: .2,.9
+			bg_color: 1,0,0,1
+			pos_hint: {"x":.815,"y":.02}
+			radius: [10,10,10,10]
+			hovering: False
+			on_press: None
+		Button:
+		    background_color: app.styler.bgc
+		    color: app.styler.fgc
+			size_hint: .15,.1
+			pos_hint: {"x":.835,"top":.8}
+			text:'Open in Editor'
+			on_press: root.go_to_editor_screen() if chooser.selection else None
+			
+		Button:
+		    background_color: app.styler.bgc
+		    color: app.styler.fgc
+			size_hint: .15,.1
+			pos_hint: {"x":.835,"top":.6}
+			text:'Delete File'
+			on_press: root.deletefile()
+
+		Button:
+		    background_color: app.styler.bgc
+			color: app.styler.fgc				
+			size_hint: .15,.1
+			pos_hint: {"x":.835,"top":.4}
+			text:'Create New File'
+			on_press: root.createfile()
+		Button:
+		    background_color: app.styler.bgc
+		    color: app.styler.fgc		
+			size_hint: .15,.1
+			pos_hint: {"x":.835,"top":.2}
+			text:'Style'
+			on_press: root.go_to_theme_changer()
+		
+
+
+
+
+
+<Screen2>:
+	inputs: editor
+	name: 'second'
+	FloatLayout:
+		CMDCard:
+			size_hint: .8,.9
+			radius: [10,10,10,10]
+			hovering: False
+			on_press: None
+			pos_hint: {"x":0,"y":.02}
+			elevation: 10
+		CodeInput:
+			id: editor
+			text:''
+			size_hint: .74,.88
+			cursor_width: '4sp'
+			pos_hint: {"x":0.03,"y":.02}
+			background_color: 1,1,1,1
+		CMDCard:
+			size_hint: .2,.9
+			pos_hint: {"x":.815,"y":.02}
+			radius: [10,10,10,10]
+			hovering: False
+			on_press: None
+		CMDCard:
+			size_hint: 1,.06
+			radius: [10,10,10,10]
+			hovering: False
+			on_press: None
+			pos_hint: {"x":0,"y":.93}
+			elevation: 10
+
+		Button:
+			background_color: app.styler.bgc
+			color: app.styler.fgc
+			text:'Open File'
+			size_hint: .15,.1
+			pos_hint: {"x":.835,"top":.8}
+			on_press: root.go_to_selection_screen()
+		Button:
+			background_color: app.styler.bgc
+			color: app.styler.fgc
+			id: terminalctrl
+			size_hint: .15,.1
+			pos_hint: {"x":.835,"top":.6}
+			on_press: pass
+		Button:
+			background_color: app.styler.bgc
+			color: app.styler.fgc
+			text:'Save'
+			size_hint: .15,.1
+			pos_hint: {"x":.835,"top":.4}
+			on_press: root.savecontent()
+		Switch:
+			id: auto_save
+			text:'Auto Save'
+			size_hint: .05,.03
+			pos_hint: {'x':.88,'top':.2}
+		MDIconButton:
+            icon: "arrow-left"  
+            theme_text_color: "Custom"  
+			# text_color: 1, 1, 1, 1  
+			pos_hint: {"x":0,"y":.92}
+            on_press: root.go_to_selection_screen()
+		
+		MDIconButton:
+            icon: "play"  
+            theme_text_color: "Custom"  
+			# text_color: 1, 1, 1, 1  
+			pos_hint: {"x":.8,"y":.92}
+            on_press: root.runfile()
+		
+		
+		# CMDCard:	
+		# 	size_hint: .2,.05
+		# 	pos_hint: {"x":.2,"y":.93}
+		# 	MDIconButton:
+		# 		icon: "play"
+		# 		size_hint: .5,.9
+		# 		pos_hint: {"x":.1,"top":9}
+		# 		on_press: root.runfile()
+
+
+
+
+
+
+
+
+
+
+
+
+# <Terminal>:
+# 	TextInput:
+# 		id:ptcontent
+# 		size_hint: .8,.2
+# 		text: 'Output Section'
+# 		readonly: True
+# 		pos_hint: {'x':0,'y':.05}
+# 	TextInput:
+# 		id: Dirshow
+# 		size_hint: .3,.05
+# 		pos_hint: {'x':0,'y':0}
+# 		readonly: True
+
+# 	TextInput:
+# 		id:newcmd
+# 		pos_hint: {'x':.3,'y':0}
+# 		size_hint: .4,.05
+# 		hint_text: "Enter Command"
+# 	Button:
+# 	    background_color: app.styler.bgc
+# 	    color: app.styler.fgc
+# 		pos_hint: {'x':.7,'y':0}
+# 		size_hint: .1,.05
+# 		text: '>'
+# 		on_press: root.execute(newcmd.text)
+	
+
+
+
+

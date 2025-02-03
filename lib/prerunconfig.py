@@ -20,7 +20,7 @@ class Configure:
         self.f_name = "."+self.f_name[-1]
         self.identifier = cslt[self.f_name]
         self.to_write = f"""
-@echo off && {self.identifier} {'"'+file_name+'"'} && pause && exit
+@echo off && {self.identifier} {'"'+file_name+'"'} && exit
 
 """
         if self.identifier != "rl" and self.identifier != "stf":
@@ -33,7 +33,7 @@ class Configure:
         import os
         print('"'+runner_script+'"')
         # os.system('start "'+runner_script+'"')
-        os.system('"'+runner_script+'"')
+        os.system(self.to_write)
     def file_existance_check(self,file_name):
         self.file = file_name
         self.f_name = file_name.split(".")
